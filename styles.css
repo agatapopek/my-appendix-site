@@ -142,12 +142,14 @@ body {
 .card:hover {
   background: var(--card-hover);
   border-color: var(--card-hover);
+  border-radius: 25px;
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(26, 24, 20, 0.16);
 }
 
 .card:hover::before {
   transform: scaleX(1);
+  border-radius: 25px 25px 0 0;
 }
 
 /* Card number */
