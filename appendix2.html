@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ═══════════════════════════════════════════
+       EDIT: Change the page title below
+  ════════════════════════════════════════════ -->
+  <title>Appendix 1 — Title Here</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Manuale:ital,wght@0,300..800;1,300..800&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Variables ── */
+    :root {
+      --bg:           #FAF9F6;
+      --ink:          #212121;
+      --ink-muted:    #7a7570;
+      --accent:       #E21E13;
+      --card-border:  #e2ddd6;
+      --img-bg:       #eae6df;
+      --max-width:    780px;
+      --font-display: 'Roboto', sans-serif;
+      --font-body:    'Roboto', sans-serif;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding: 0 1.5rem 6rem;
+    }
+
+    /* ── Background grid ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,24,20,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,24,20,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 2rem 0 0;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-muted);
+      transition: color 0.25s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .back-link .arrow { font-size: 0.9rem; }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 3rem 0 3.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 4rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    .page-title em {
+      font-weight: 600;
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .page-description {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      max-width: 52ch;
+    }
+
+    /* ── Image list ── */
+    .image-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    /* ── Single image entry ── */
+    .image-entry {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    /* stagger each entry */
+    .image-entry:nth-child(1) { animation-delay: 0.05s; }
+    .image-entry:nth-child(2) { animation-delay: 0.15s; }
+    .image-entry:nth-child(3) { animation-delay: 0.25s; }
+    .image-entry:nth-child(4) { animation-delay: 0.35s; }
+    .image-entry:nth-child(5) { animation-delay: 0.45s; }
+
+    .image-wrap {
+      border-radius: 25px;
+      width: 100%;
+      background: var(--img-bg);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .image-entry:hover .image-wrap img {
+      transform: scale(1.02);
+    }
+
+    /* Placeholder shown when no real image is set */
+    .image-wrap .placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--card-border);
+    }
+
+    .placeholder svg { opacity: 0.5; }
+
+    .placeholder-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+    }
+
+    /* Caption row */
+    .caption-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .caption-index {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .caption-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    .caption-note {
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    /* ── Footer rule ── */
+    .page-footer {
+      margin-top: 5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .caption-row { flex-direction: column; gap: 0.4rem; }
+      .caption-note { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Back navigation -->
+  <a href="index.html" class="back-link">
+    <span class="arrow">←</span> Back to index
+  </a>
+
+  <!-- ═══════════════════════════════════════════
+       EDIT: Page header — change eyebrow, title, description
+  ════════════════════════════════════════════ -->
+  <header class="page-header">
+    <p class="eyebrow">Appendix 1</p>
+    <h1 class="page-title">Research plan</h1>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       EDIT: Image entries
+       To add more: duplicate an <article class="image-entry"> block.
+       To use a real image: replace the <div class="placeholder">
+       block with: <img src="your-image.jpg" alt="description" />
+  ════════════════════════════════════════════ -->
+  <section class="image-list">
+
+    <!-- Image 1 -->
+    <article class="image-entry">
+      <div class="image-wrap">
+        <!-- Replace this placeholder with your image:
+             <img src="images/photo1.jpg" alt="Description of image" /> -->
+        <div class="placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="18" rx="1"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="placeholder-label">Image placeholder</span>
+        </div>
+      </div>
+      <div class="caption-row">
+        <span class="caption-index">Fig. 1</span>
+        <p class="caption-text">interview with Jakub P</p>
+      </div>
+    </article>
+
+    <!-- Image 2 -->
+    <article class="image-entry">
+      <div class="image-wrap">
+        <div class="placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="18" rx="1"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="placeholder-label">Image placeholder</span>
+        </div>
+      </div>
+      <div class="caption-row">
+        <span class="caption-index">Fig. 2</span>
+        <p class="caption-text">Caption or subtitle for the second image goes here.</p>
+      </div>
+    </article>
+
+    <!-- Image 3 -->
+    <article class="image-entry">
+      <div class="image-wrap">
+        <div class="placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="18" rx="1"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="placeholder-label">Image placeholder</span>
+        </div>
+      </div>
+      <div class="caption-row">
+        <span class="caption-index">Fig. 3</span>
+        <p class="caption-text">Caption or subtitle for the third image goes here.</p>
+        <span class="caption-note">Source / Year</span>
+      </div>
+    </article>
+
+  </section>
+  <!-- ═══ End image list ═══ -->
+
+  <footer class="page-footer">
+    <span>Appendix 1</span>
+    <!-- EDIT: Update document name / date -->
+    <span>Agata Popek · 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
