@@ -14,7 +14,7 @@
   --card-border: #e2ddd6;
   --card-hover: #a8c23f;
   --card-hover-text: #ffffff;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Roboto', sans-serif;
   --font-body:    'Roboto', sans-serif;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
