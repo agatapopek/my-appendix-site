@@ -102,13 +102,14 @@ body {
 .cards {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 1.25rem;
   width: 100%;
   animation: fadeUp 0.7s 0.15s ease both;
 }
 
 .card {
-  flex: 1;
+  flex: 0 0 calc(33.333% - 0.84rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
