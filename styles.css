@@ -161,7 +161,7 @@ body {
 }
 
 .card:hover .card-number {
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(61, 74, 42);
 }
 
 /* Card label */
@@ -203,7 +203,7 @@ body {
 }
 
 .card:hover .card-arrow {
-  color: #fff;
+  color: #3d4a2a;
   transform: translateX(4px);
 }
 
