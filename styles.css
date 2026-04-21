@@ -1,0 +1,247 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:        #f5f2ec;
+  --ink:       #1a1814;
+  --ink-muted: #7a7570;
+  --accent:    #b8893a;
+  --card-bg:   #ffffff;
+  --card-border: #e2ddd6;
+  --card-hover: #1a1814;
+  --card-hover-text: #ffffff;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ── Background grid texture ── */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26, 24, 20, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 24, 20, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Layout ── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  animation: fadeUp 0.7s ease both;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.title span {
+  font-weight: 600;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.title-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  margin: 1.5rem auto 0;
+}
+
+/* ── Cards ── */
+.cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  width: 100%;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 1.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+/* Accent line at top */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.card:hover {
+  background: var(--card-hover);
+  border-color: var(--card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26, 24, 20, 0.16);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Card number */
+.card-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--card-border);
+  transition: color var(--transition);
+  display: block;
+}
+
+.card:hover .card-number {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* Card label */
+.card-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  transition: color var(--transition);
+}
+
+.card:hover .card-label {
+  color: var(--card-hover-text);
+}
+
+.card-sub {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 0.35rem;
+  transition: color var(--transition);
+}
+
+.card:hover .card-sub {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Arrow */
+.card-arrow {
+  font-size: 1.25rem;
+  color: var(--accent);
+  transition: color var(--transition), transform var(--transition);
+  display: block;
+  align-self: flex-end;
+}
+
+.card:hover .card-arrow {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* ── Animation ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .card-number {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    flex: 1;
+  }
+
+  .card-arrow {
+    align-self: center;
+    flex-shrink: 0;
+  }
+}
