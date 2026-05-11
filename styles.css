@@ -36,18 +36,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Background grid texture ── */
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(26, 24, 20, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26, 24, 20, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* ── Layout ── */
 .container {
   position: relative;
