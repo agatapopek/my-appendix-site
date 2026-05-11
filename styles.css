@@ -120,7 +120,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 4px;
   background: rgba(61, 74, 42);
   transform: scaleX(0);
   transform-origin: left;
