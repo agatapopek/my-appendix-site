@@ -92,7 +92,8 @@ body {
 }
 
 .card {
-  flex: 0 0 calc(33.333% - 0.84rem);
+  flex: 1 1 240px;
+  max-width: 260px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
