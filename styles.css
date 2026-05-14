@@ -208,28 +208,23 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
-  .cards {
-    flex-direction: column;
-  }
-
   .card {
-    flex-direction: row;
-    align-items: center;
+    flex: 1 1 100%;
+    max-width: 320px;
+    margin: 0 auto;
     padding: 1.5rem;
     gap: 1rem;
   }
 
-  .card-number {
-    font-size: 2rem;
-    flex-shrink: 0;
+  .cards {
+    justify-content: center;
   }
 
-  .card-body {
-    flex: 1;
+  .card-number {
+    font-size: 2rem;
   }
 
   .card-arrow {
     align-self: center;
-    flex-shrink: 0;
   }
 }
