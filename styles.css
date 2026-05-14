@@ -36,10 +36,8 @@ body {
 
 /* ── Layout ── */
 .container {
-  position: relative;
-  z-index: 1;
-  width: 100%;
   max-width: 860px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
