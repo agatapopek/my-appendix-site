@@ -137,45 +137,23 @@
     .image-entry:nth-child(5) { animation-delay: 0.45s; }
 
     .image-wrap {
-      border-radius: 25px;
-      width: 100%;
-      background: var(--img-bg);
-      border: 1px solid var(--card-border);
-      overflow: hidden;
-      position: relative;
-    }
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  background: none;
+  border: none;
+}
 
     .image-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 
     .image-entry:hover .image-wrap img {
       transform: scale(1.02);
-    }
-
-    /* Placeholder shown when no real image is set */
-    .image-wrap .placeholder {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      color: var(--card-border);
-    }
-
-    .placeholder svg { opacity: 0.5; }
-
-    .placeholder-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-family: var(--font-body);
     }
 
     /* Caption row */
@@ -264,14 +242,6 @@
     <article class="image-entry">
       <div class="image-wrap">
              <img src="logo4.jpeg" alt="etch one" />
-        <div class="placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="3" y="3" width="18" height="18" rx="1"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
-          </svg>
-          <span class="placeholder-label">Image placeholder</span>
-        </div>
       </div>
       <div class="caption-row">
         <span class="caption-index">Fig. 1</span>
