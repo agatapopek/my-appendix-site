@@ -85,11 +85,10 @@ body {
 /* ── Cards ── */
 .cards {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
   width: 100%;
-  animation: fadeUp 0.7s 0.15s ease both;
 }
 
 .card {
